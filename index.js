@@ -10,45 +10,67 @@ async function ListMembers() {
   return members
 }
 
-const table = document.querySelector('#data-table tbody')
-table.innerHTML = ''
+const modal = {
+  click() {
+    document.querySelector('.modal-overlay').classList.toggle('active')
+  }
+}
 
-ListMembers().then((members) => {
-  members.forEach((member) => {
-    const tr = document.createElement('tr')
+const table = document.querySelector('#data-table tbody')
+
+function Rows(member) {
+  const tr = document.createElement('tr')
     tr.innerHTML = `
             <td>
                 <img class="logo" src=${member.avatar_url}"  alt="User Image" />
             </td>
-            <td class="login">${member.login}</td>
+            <td class="login">${member.login}</td>            
         `
     table.appendChild(tr)
+}
+
+function ClearTable() {  
+  table.innerHTML = ''
+}
+
+function Members() {
+  ListMembers().then((members) => {  
+    members.forEach((member) => {    
+      Rows(member)
+    })  
   })
-})
+}
+
+Members()
 
 function filterByLogin(login) {
   ListMembers().then((members) => {
     members.find((member) => {
       if (member.login === login) {
-        table.innerHTML = ''
-        const tr = document.createElement('tr')
-        tr.innerHTML = `
-                    <td>
-                        <img class="logo" src=${member.avatar_url}"  alt="User Image" />
-                    </td>
-                    <td class="login">${member.login}</td>
-                `
-        table.appendChild(tr)
+        ClearTable()
+        Rows(member)
+      } else {        
+        document.querySelector('input').value = ''               
       }
     })
   })
 }
 
-const btnFilter = document.querySelector('.btn')
+const btnFilter = document.querySelector('.search')
+const btnCancel =  document.querySelector('.cancel')
 
 btnFilter.addEventListener('click', () => {
   const login = document.querySelector('input').value
-  filterByLogin(login)
-  document.querySelector('input').value = ''
+  filterByLogin(login)  
 })
+
+btnCancel.addEventListener('click', () => {  
+  document.querySelector('input').value = ''
+  ClearTable()
+  Members()
+})
+
+// document.getElementById('.logo').addEventListener('click', () => {  
+//   modal.click()
+// })
 

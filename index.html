@@ -11,18 +11,42 @@
 <body>
  <header>   
    <input id="login" type="text" placeholder="Login do usuário">
-   <button class="btn">Search</button>
+   <button class="btn search">Search</button>
+   <button class="btn cancel">Cancelar</button>
  </header>
     <table id="data-table">
         <thead>
           <tr>
             <th>Imagem</th>
-            <th>Login</th>            
+            <th>Login</th>                        
           </tr>
         </thead>
         <tbody>          
         </tbody>
     </table>
+
+    <div class="modal-overlay">
+      <div class="modal">
+        <div id="form">
+          <h2>Detalhes</h2>          
+            <div class="input-group">
+              <label class="sr-only">Name: 
+                <p>Fabi</p>
+              </label>
+              <label class="sr-only">Repos: 
+                <p>31</p>
+              </label>
+              <label class="sr-only">Followers: 
+                <p>6</p>
+              </label>
+              <label class="sr-only">Created at:
+                <p>12/02/2021</p>
+              </label>
+              <a href="#" class="button cancel" onclick="modal.click()"
+                >Cancelar</a
+              >
+              
+            </div>
     <script type="text/javascript" src="./index.js"></script>
 </body>
 </html>

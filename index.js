@@ -9,11 +9,9 @@ async function ListMembers() {
     }
 
 const table = document.querySelector('#data-table tbody')
-
 table.innerHTML = "";
 
-ListMembers().then(members => {
-    
+ListMembers().then(members => {    
     members.forEach((member) => {
         const tr = document.createElement('tr')
         tr.innerHTML = 

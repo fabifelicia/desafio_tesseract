@@ -39,7 +39,13 @@
   }
   
   table tbody tr {
-    opacity: 0.7;
+    opacity: 0.7;    
+  }
+
+  .logo {
+    border-radius: 50%;
+    width: 10%;
+    
   }
   
   table tbody tr:hover {

@@ -23,9 +23,11 @@ ListMembers().then(members => {
         `
         table.appendChild(tr);
     })
-
 })
 
+function filterByLogin(member) {
+    
+}
 
 
 

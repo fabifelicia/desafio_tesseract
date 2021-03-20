@@ -24,7 +24,11 @@ function Rows(member) {
             <td>
                 <img class="logo" src=${member.avatar_url}"  alt="User Image" />
             </td>
-            <td class="login">${member.login}</td>            
+            <td class="login">${member.login}</td>
+            <td>
+            <button class="details" onclick="modal.click()">Detalhes</button>
+            </td>
+                      
         `
     table.appendChild(tr)
 }
@@ -70,7 +74,7 @@ btnCancel.addEventListener('click', () => {
   Members()
 })
 
-// document.getElementById('.logo').addEventListener('click', () => {  
-//   modal.click()
-// })
+document.getElementById('.details').addEventListener('click', () => {  
+  modal.click()
+})
 

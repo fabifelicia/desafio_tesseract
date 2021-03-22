@@ -13,35 +13,34 @@ async function ListMembers() {
 const modal = {
   click() {
     document.querySelector('.modal-overlay').classList.toggle('active')
-  }
+  },
 }
 
 const table = document.querySelector('#data-table tbody')
 
 function Rows(member) {
   const tr = document.createElement('tr')
-    tr.innerHTML = `
-            <td>
-                <img class="logo" src=${member.avatar_url}"  alt="User Image" />
-            </td>
-            <td class="login">${member.login}</td>
-            <td>
-            <button class="details" onclick="modal.click()">Detalhes</button>
-            </td>
-                      
-        `
-    table.appendChild(tr)
+  tr.innerHTML = `
+        <td>
+            <img class="logo" src=${member.avatar_url}"  alt="User Image" />
+        </td>
+        <td class="login">${member.login}</td>
+        <td>
+          <button class="details" onclick="OpenDetails()">Detalhes</button>
+        </td>        
+      `
+  table.appendChild(tr)
 }
 
-function ClearTable() {  
+function ClearTable() {
   table.innerHTML = ''
 }
 
 function Members() {
-  ListMembers().then((members) => {  
-    members.forEach((member) => {    
+  ListMembers().then((members) => {
+    members.forEach((member) => {
       Rows(member)
-    })  
+    })
   })
 }
 
@@ -53,28 +52,53 @@ function filterByLogin(login) {
       if (member.login === login) {
         ClearTable()
         Rows(member)
-      } else {        
-        document.querySelector('input').value = ''               
+      } else {
+        document.querySelector('input').value = ''
       }
     })
   })
 }
 
 const btnFilter = document.querySelector('.search')
-const btnCancel =  document.querySelector('.cancel')
+const btnCancel = document.querySelector('.cancel')
 
 btnFilter.addEventListener('click', () => {
   const login = document.querySelector('input').value
-  filterByLogin(login)  
+  filterByLogin(login)
 })
 
-btnCancel.addEventListener('click', () => {  
+btnCancel.addEventListener('click', () => {
   document.querySelector('input').value = ''
   ClearTable()
   Members()
 })
 
-document.getElementById('.details').addEventListener('click', () => {  
-  modal.click()
-})
+function OpenDetails(){  
+    modal.click()
+    let user = document.querySelector('.login').textContent
+    console.log(user)
+    const div = document.querySelector('.input-group')
+    fetch('https://api.github.com/users/' + user)
+      .then((response) => response.json())
+      .then((user) => {
+        
+        div.innerHTML = `
+          <label class="sr-only">Name:
+              <p>${user.name}</p>
+          </label>
+          <label class="sr-only">Repos:
+              <p>${user.public_repos}</p>
+          </label>
+          <label class="sr-only">Followers:
+              <p>${user.followers}</p>
+          </label>
+          <label class="sr-only">Created at:
+              <p>${user.created_at}</p>
+          </label> `
+    })
+  } 
+
+
+  
+
 

@@ -30,18 +30,21 @@ input {
   outline: none;  
 }
 
-.btn {
-  padding: 10px;
-	width: 10%;
+.btn, .details {
+  padding: 10px;	
 	margin: 0 50px;
 	border-radius: 50px;
 	border: none;
 	text-transform: uppercase;
 	font-weight: 700;
-	color: #fff;
-	background: linear-gradient(to left, lightgreen, green);
+	color: #fff;	
 	cursor: pointer;
   outline: none;
+}
+
+.btn {
+  width: 10%;
+  background: linear-gradient(to left, lightgreen, green);
 }
 
 .btn:last-child{
@@ -64,7 +67,8 @@ input {
   }
   
   table tbody tr {
-    opacity: 0.7;    
+    opacity: 0.7;
+      
   }
 
   .logo {
@@ -84,6 +88,13 @@ input {
     font-weight: normal;
   }
 
+  .details {  
+	width: 40%;
+	background:  rgba(18, 40, 68, 0.5);
+	
+  }
+
+ 
   .modal-overlay {
     width: 100%;
     height: 100%;
@@ -111,5 +122,35 @@ input {
     opacity: 1;
     visibility: visible;
   }
+
+  #form {
+    max-width: 500px;  
   
+  }
+  
+  #form h2 {
+    margin-top: 0;    
+  }
+
+  .input-group {
+    margin-top:0.8rem;  
+  }
+  .sr-only {
+    display: flex;
+    justify-content: flex-start;     
+  }
+
+  p {
+    margin: 0 2rem;
+  }
+
+  .exit {
+    margin: 20px;    
+  }
+
+  .return {       
+    text-decoration: none;
+       
+  }
+
 

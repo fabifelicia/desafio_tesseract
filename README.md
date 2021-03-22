@@ -14,7 +14,7 @@ detalhes sobre a pessoa selecionada. Você deve criar uma página que tenha os s
 *** Os membros do Tesseract, assim como suas informações, devem ser carregados de
 modo dinâmico pela api do github:
  ## https://api.github.com/orgs/grupotesseract/public_members
- ## https://api.github.com/users/ {user}
+ ## https://api.github.com/users/{user}
 
 *** Ao finalizar subir como um repositório no Github e nos enviar o link deste repositório.  O prazo final é até o dia 29/03/2020 .
 **** Boa sorte!

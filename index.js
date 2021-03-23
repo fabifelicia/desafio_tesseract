@@ -1,4 +1,5 @@
 const URL = 'https://api.github.com/orgs/grupotesseract/public_members'
+const table = document.querySelector('#data-table tbody')
 
 async function ListMembers() {
   const members = await fetch(URL)
@@ -16,19 +17,18 @@ const modal = {
   },
 }
 
-const table = document.querySelector('#data-table tbody')
-
 function Rows(member) {
   const tr = document.createElement('tr')
-  tr.innerHTML = `
-        <td>
-            <img class="logo" src=${member.avatar_url}"  alt="User Image" />
-        </td>
-        <td class="login">${member.login}</td>
-        <td>
-          <button class="details" onclick="OpenDetails()">Detalhes</button>
-        </td>        
-      `
+  tr.innerHTML =
+  `
+    <td>
+      <img class="logo" src=${member.avatar_url}" alt="User Image" />
+    </td>
+    <td class="login">${member.login}</td>
+    <td>
+      <button class="details" onclick="OpenDetails('${member.login}')">Detalhes</button>
+    </td>        
+  `
   table.appendChild(tr)
 }
 
@@ -43,8 +43,6 @@ function Members() {
     })
   })
 }
-
-Members()
 
 function filterByLogin(login) {
   ListMembers().then((members) => {
@@ -73,16 +71,12 @@ btnCancel.addEventListener('click', () => {
   Members()
 })
 
-function OpenDetails(){  
-    modal.click()
-    let user = document.querySelector('.login').textContent
-    console.log(user)
-    const div = document.querySelector('.input-group')
-    fetch('https://api.github.com/users/' + user)
-      .then((response) => response.json())
-      .then((user) => {
-        
-        div.innerHTML = `
+function OpenDetails(user) {    
+  const div = document.querySelector('.input-group')
+  fetch('https://api.github.com/users/' + user)
+    .then((response) => response.json())
+    .then((user) => {      
+      div.innerHTML = `
           <label class="sr-only">Name:
               <p>${user.name}</p>
           </label>
@@ -94,11 +88,9 @@ function OpenDetails(){
           </label>
           <label class="sr-only">Created at:
               <p>${user.created_at}</p>
-          </label> `
+          </label> `      
     })
-  } 
+    modal.click() 
+}
 
-
-  
-
-
+Members()

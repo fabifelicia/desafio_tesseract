@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap');
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
   }
   
   html {
@@ -10,7 +13,6 @@
   
   body {
     background: #f0f2f5;
-    font-family: 'Shippori Mincho', serif;
   }
 
   header {
@@ -19,6 +21,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 20px;
 }
 
 input {
@@ -31,12 +34,12 @@ input {
 }
 
 .btn, .details {
-  padding: 10px;	
+  padding: 8px;	
 	margin: 0 50px;
 	border-radius: 50px;
 	border: none;
-	text-transform: uppercase;
-	font-weight: 700;
+	/* text-transform: uppercase; */
+	font-weight: 500;
 	color: #fff;	
 	cursor: pointer;
   outline: none;
@@ -60,9 +63,9 @@ input {
   table thead th {
     background: #fff;
   
-    font-weight: normal;
+    font-weight: 500;
     padding: 1rem 2rem;  
-    text-align: left;
+    text-align: center;
     
   }
   
@@ -84,13 +87,13 @@ input {
   table tbody td {
     background: #fff;
     padding: 1rem 2rem;
-  
-    font-weight: normal;
+    text-align: center;
+    font-weight: 400;
   }
 
   .details {  
 	width: 40%;
-	background:  rgba(18, 40, 68, 0.5);
+	background:  linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(41,41,246,1) 1%, rgba(0,212,255,1) 100%);
 	
   }
 
@@ -124,17 +127,25 @@ input {
   }
 
   #form {
-    max-width: 500px;  
-  
+    max-width: 500px;
+    display: flex;
+    flex-direction: column; 
+    justify-content:center;
+    align-items:center;   
   }
   
   #form h2 {
-    margin-top: 0;    
+    margin-top: 0; 
+    font-weight: 500;
   }
 
   .input-group {
-    margin-top:0.8rem;  
+    margin-top:0.8rem;
+    border: 1px solid rgb(119, 113, 233);
+    border-radius: 8px;  
+    padding: 10px;
   }
+
   .sr-only {
     display: flex;
     justify-content: flex-start;     
@@ -145,11 +156,12 @@ input {
   }
 
   .exit {
-    margin: 20px;    
+    margin: 30px;    
   }
 
   .return {       
     text-decoration: none;
+    
        
   }
 

@@ -1,6 +1,7 @@
 const URL = 'https://api.github.com/orgs/grupotesseract/public_members'
 const table = document.querySelector('#data-table tbody')
 
+
 async function ListMembers() {
   const members = await fetch(URL)
     .then((response) => response.json())
@@ -8,8 +9,11 @@ async function ListMembers() {
       console.log(error)
     })
 
+  document.getElementsByClassName('table-row-count')[0].innerHTML = `${members.length} Members`
+
   return members
 }
+
 
 const modal = {
   click() {
@@ -20,7 +24,7 @@ const modal = {
 function Rows(member) {
   const tr = document.createElement('tr')
   tr.innerHTML =
-  `
+    `
     <td>
       <img class="logo" src=${member.avatar_url}" alt="User Image" />
     </td>
@@ -71,11 +75,11 @@ btnCancel.addEventListener('click', () => {
   Members()
 })
 
-function OpenDetails(user) {    
+function OpenDetails(user) {
   const div = document.querySelector('.input-group')
   fetch('https://api.github.com/users/' + user)
     .then((response) => response.json())
-    .then((user) => {      
+    .then((user) => {
       div.innerHTML = `
           <label class="sr-only">Name:
               <p>${user.name}</p>
@@ -88,9 +92,9 @@ function OpenDetails(user) {
           </label>
           <label class="sr-only">Created at:
               <p>${user.created_at}</p>
-          </label> `      
+          </label> `
     })
-    modal.click() 
+  modal.click()
 }
 
 Members()

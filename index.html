@@ -18,15 +18,25 @@
       <button class="btn cancel">Cancelar</button>
     </header>
     <table id="data-table">
+      <caption>
+        Team Members
+      <span class="table-row-count"></span>
+      </caption>
       <thead>
         <tr>
           <th>Image</th>
           <th>Login do Github</th>
-          <th>Details</th>
-          <th></th>
+          <th>Details</th>          
         </tr>
       </thead>
       <tbody></tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <ul class="pagination"></ul>
+          </td>
+        </tr>
+      </tfoot>
     </table>
 
     <div class="modal-overlay">
@@ -42,6 +52,7 @@
         </div>
       </div>
     </div>
+    
     <script type="text/javascript" src="./index.js"></script>
   </body>
 </html>

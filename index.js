@@ -1,19 +1,17 @@
 const URL = 'https://api.github.com/orgs/grupotesseract/public_members'
 const table = document.querySelector('#data-table tbody')
+let countMembers = qtdMembers()
 
-
-async function ListMembers() {
-  const members = await fetch(URL)
-    .then((response) => response.json())
-    .catch((error) => {
-      console.log(error)
-    })
-
-  document.getElementsByClassName('table-row-count')[0].innerHTML = `${members.length} Members`
-
-  return members
+async function listMembers() {
+  try {
+    const response = await fetch(URL)
+    const members = await response.json()
+    return { count: members.length, members }
+  } catch (error) {
+    console.log(error)
+    return { count: 0, members: [] }
+  }
 }
-
 
 const modal = {
   click() {
@@ -21,7 +19,7 @@ const modal = {
   },
 }
 
-function Rows(member) {
+function rows(member) {
   const tr = document.createElement('tr')
   tr.innerHTML =
     `
@@ -36,24 +34,35 @@ function Rows(member) {
   table.appendChild(tr)
 }
 
-function ClearTable() {
+function clearTable() {
   table.innerHTML = ''
 }
 
-function Members() {
-  ListMembers().then((members) => {
-    members.forEach((member) => {
-      Rows(member)
+async function members() {
+  try {
+    const { members } = await listMembers()    
+    members.forEach(member => {
+      rows(member)
     })
-  })
+  } catch (error) {
+    console.error(error)
+  }
 }
 
+async function qtdMembers() {
+  const { count } = await listMembers()
+  document.getElementsByClassName('table-row-count')[0].innerHTML = `${count} Members`
+
+  return count
+}
+
+
 function filterByLogin(login) {
-  ListMembers().then((members) => {
+  listMembers().then((members) => {
     members.find((member) => {
       if (member.login === login) {
-        ClearTable()
-        Rows(member)
+        clearTable()
+        rows(member)
       } else {
         document.querySelector('input').value = ''
       }
@@ -71,11 +80,11 @@ btnFilter.addEventListener('click', () => {
 
 btnCancel.addEventListener('click', () => {
   document.querySelector('input').value = ''
-  ClearTable()
-  Members()
+  clearTable()
+  members()
 })
 
-function OpenDetails(user) {
+function openDetails(user) {
   const div = document.querySelector('.input-group')
   fetch('https://api.github.com/users/' + user)
     .then((response) => response.json())
@@ -97,4 +106,4 @@ function OpenDetails(user) {
   modal.click()
 }
 
-Members()
+members()

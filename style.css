@@ -15,12 +15,13 @@ body {
 }
 
 header {
-  width: 100%;
-  height: 50px;
+  width: 50%;
+  height: 50px; 
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 20px;
+  
 }
 
 input {
@@ -46,11 +47,11 @@ input {
 
 .btn {
   width: 10%;
-  background: linear-gradient(to left, lightgreen, green);
+  background: #9958B6;
 }
 
 .btn:last-child {
-  background: linear-gradient(to left, red, orange);
+  background: #E61769;
 }
 
 #data-table {
@@ -81,34 +82,48 @@ input {
   color: #a0a7b1;
 }
 
-#data-table thead {
+#data-table thead, #data-table tfoot {
   border-top: 2px solid #edeef1;
+}
+
+#data-table tfoot {
+  margin-top: 16px;  
+}
+
+#data-table td {
+  padding: 8px 16px;
+  vertical-align: middle;
+}
+
+#data-table tbody tr:nth-child(odd){
+  background-color: #f6f9ff;
+}
+
+#data-table tbody tr:hover{
+  background-color: #e2ecff;
+}
+
+.table-row-count {
+  font-size: 0.8rem;
+  font-weight: 500;
+  background-color: #f1f2f6;
+  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 16px;
+  border-radius: 8px;
 }
 
 .logo {
   border-radius: 50%;
-  width: 8%;
-}
-
-table tbody tr:hover {
-  opacity: 1;
-}
-
-table tbody td {
-  background: #fff;
-  padding: 1rem 2rem;
-  text-align: center;
-  font-weight: 400;
+  width: 30%;
+  height: 30%;
+  object-fit: cover;
 }
 
 .details {
-  width: 40%;
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(41, 41, 246, 1) 1%,
-    rgba(0, 212, 255, 1) 100%
-  );
+  width: 50%;
+  background: #3EAE4A;  
 }
 
 .modal-overlay {
@@ -145,8 +160,7 @@ table tbody td {
   align-items: center;
 }
 
-#form h2 {
-  margin-top: 0;
+#form span { 
   font-weight: 500;
 }
 
@@ -154,7 +168,7 @@ table tbody td {
   margin-top: 0.8rem;
   border: 1px solid rgb(119, 113, 233);
   border-radius: 8px;
-  padding: 10px;
+  padding: 10px;  
 }
 
 .sr-only {
@@ -166,10 +180,11 @@ p {
   margin: 0 2rem;
 }
 
-.exit {
+.close {
   margin: 30px;
 }
 
 .return {
+  background-color: #E61769;
   text-decoration: none;
 }

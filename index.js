@@ -15,8 +15,10 @@ async function listMembers() {
 
 const modal = {
   click() {
-    document.querySelector('.modal-overlay').classList.toggle('active')
-  },
+    document.querySelector('.modal-overlay').classList.toggle('active')   
+      clearTable()
+      members()  
+  },  
 }
 
 function rows(member) {
@@ -28,7 +30,10 @@ function rows(member) {
     </td>
     <td class="login">${member.login}</td>
     <td>
-      <button class="details" onclick="OpenDetails('${member.login}')">Detalhes</button>
+      <button class="details" onclick="openDetails('${member.login}')">
+        <i class="fa-solid fa-circle-info"></i>
+        Info
+      </button>
     </td>        
   `
   table.appendChild(tr)
@@ -40,7 +45,7 @@ function clearTable() {
 
 async function members() {
   try {
-    const { members } = await listMembers()    
+    const { members } = await listMembers()
     members.forEach(member => {
       rows(member)
     })
@@ -56,17 +61,15 @@ async function qtdMembers() {
   return count
 }
 
-
-function filterByLogin(login) {
-  listMembers().then((members) => {
-    members.find((member) => {
-      if (member.login === login) {
-        clearTable()
-        rows(member)
-      } else {
-        document.querySelector('input').value = ''
-      }
-    })
+async function filterByLogin(login) {
+  const { members } = await listMembers()
+  members.find(member => {
+    if (member.login === login) {
+      clearTable()
+      rows(member)
+    } else {
+      document.querySelector('input').value = ''
+    }
   })
 }
 
@@ -86,7 +89,7 @@ btnCancel.addEventListener('click', () => {
 
 function openDetails(user) {
   const div = document.querySelector('.input-group')
-  fetch('https://api.github.com/users/' + user)
+  fetch(`https://api.github.com/users/${user}`)
     .then((response) => response.json())
     .then((user) => {
       div.innerHTML = `

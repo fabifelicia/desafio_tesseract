@@ -68,14 +68,19 @@ async function qtdMembers() {
 
 async function filterByLogin(login) {
   const { members } = await listMembers()
-  members.find(member => {
-    if (member.login === login) {
-      clearTable()
-      rows(member)
-    } else {
-      document.querySelector('input').value = ''
-    }
-  })
+  const foundUser = members.find(member => member.login === login)
+
+  if (foundUser) {
+    clearTable()
+    rows(foundUser)
+  } else {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Usuário não encontrado!",
+    });
+  }
+  document.querySelector('input').value = ''
 }
 
 const btnFilter = document.querySelector('.search')

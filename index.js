@@ -92,25 +92,47 @@ btnCancel.addEventListener('click', () => {
   members()
 })
 
+function convertDate(date) {
+
+  const dateObj = new Date(date)
+  const day = String(dateObj.getDate()).padStart(2, '0');
+  const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+  const year = dateObj.getFullYear();
+
+  return `${day}.${month}.${year}`;
+}
+
+
 function openDetails(user) {
-  const div = document.querySelector('.card-profile');
+  const div = document.querySelector('.profile-card');
   fetch(`https://api.github.com/users/${user}`)
     .then((response) => response.json())
     .then((user) => {
+      const formatDate = convertDate(user.created_at)
       div.innerHTML =
-        `   
-          <label class="sr-only">Name:
-           <p>${user.name}</p>
-          </label>
-          <label class="sr-only">Repos:
-              <p>${user.public_repos}</p>
-          </label>
-          <label class="sr-only">Followers:
-              <p>${user.followers}</p>
-          </label>
-          <label class="sr-only">Created at:
-              <p>${user.created_at}</p>
-          </label> 
+        ` 
+        <div class="image">
+          <img src="${user.avatar_url}" alt="User Image" class="profile-img"> 
+        </div>  
+        <div class="text-data">
+          <span class='name'>${user.name}</span>
+          <span class='created'>Created at ${formatDate}</span>
+        </div>     
+        <div class="analytics">
+          <div class="data">
+            <i class="fa-solid fa-users"></i>
+            <span class="number">${user.followers}</span>
+          </div>
+          <div class="data">
+            <i class="fa-solid fa-file-code"></i>
+            <span class="number">${user.public_repos}</span>
+          </div>
+        </div> 
+        <div class="close">
+          <button class="details return" onclick="modal.click()">
+            <i class="fa-solid fa-arrow-left"></i>
+          <button/> 
+        </div>         
       `
       modal.click();
     })

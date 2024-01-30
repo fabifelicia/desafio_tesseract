@@ -152,28 +152,28 @@ input {
   visibility: visible;
 }
 
-#form {
-  max-width: 500px;
+.card {
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#form span { 
+.card span { 
   font-weight: 500;
 }
 
-.input-group {
+.card-profile {
   margin-top: 0.8rem;
   border: 1px solid rgb(119, 113, 233);
   border-radius: 8px;
-  padding: 10px;  
+  padding: 10px;   
 }
 
 .sr-only {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-start;  
 }
 
 p {

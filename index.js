@@ -15,10 +15,15 @@ async function listMembers() {
 
 const modal = {
   click() {
-    document.querySelector('.modal-overlay').classList.toggle('active')   
+    const modalOverlay = document.querySelector('.modal-overlay')
+    if (modalOverlay.classList.contains('active')) {
+      modalOverlay.classList.remove('active');
       clearTable()
-      members()  
-  },  
+      members()
+    } else {
+      modalOverlay.classList.add('active')
+    }
+  },
 }
 
 function rows(member) {
@@ -88,13 +93,14 @@ btnCancel.addEventListener('click', () => {
 })
 
 function openDetails(user) {
-  const div = document.querySelector('.input-group')
+  const div = document.querySelector('.card-profile');
   fetch(`https://api.github.com/users/${user}`)
     .then((response) => response.json())
     .then((user) => {
-      div.innerHTML = `
+      div.innerHTML =
+        `   
           <label class="sr-only">Name:
-              <p>${user.name}</p>
+           <p>${user.name}</p>
           </label>
           <label class="sr-only">Repos:
               <p>${user.public_repos}</p>
@@ -104,9 +110,13 @@ function openDetails(user) {
           </label>
           <label class="sr-only">Created at:
               <p>${user.created_at}</p>
-          </label> `
+          </label> 
+      `
+      modal.click();
     })
-  modal.click()
+    .catch((error) => {
+      console.error('Erro ao buscar detalhes do usuário:', error);
+    });
 }
 
 members()

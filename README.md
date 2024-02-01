@@ -22,3 +22,6 @@
 * CSS
 * fetch Api
 * Jest
+
+
+[![CodeFactor](https://www.codefactor.io/repository/github/fabifelicia/desafio-receita-rocketseat/badge)](https://www.codefactor.io/repository/github/fabifelicia/desafio-receita-rocketseat)

@@ -1,6 +1,5 @@
-import { listMembers } from './githubApi.js'
 import { rows, clearTable } from'./table.js'
-
+import { listMembers } from './githubApi.js'
 
 export async function members() {
   try {
@@ -21,11 +20,17 @@ export async function filterByLogin(login) {
     if (foundUser) {
       clearTable();
       rows(foundUser);
+    } else if (login === ''){
+      Swal.fire({
+        icon: 'warning',
+        title: 'Oops...',
+        text: 'Enter a username',
+      });
     } else {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Usuário não encontrado!',
+        text: 'User not found!',
       });
     }
     document.querySelector('input').value = '';
@@ -36,6 +41,7 @@ export async function filterByLogin(login) {
 
 const btnFilter = document.querySelector('.search');
 const btnCancel = document.querySelector('.cancel');
+
 
 btnFilter.addEventListener('click', () => {
   const login = document.querySelector('input').value;

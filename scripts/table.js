@@ -1,6 +1,6 @@
 import { modal } from'./modal.js'
-import { getUserDetails } from './githubApi.js'
 import { convertDate } from'./utils.js'
+import { getUserDetails } from './githubApi.js'
 
 const table = document.querySelector('#data-table tbody');
 
@@ -12,17 +12,15 @@ export function rows(member) {
     </td>
     <td class="login">${member.login}</td>
     <td>
-      <button class="details" onclick="openDetails('${member.login}')">
+      <button class="details">
         <i class="fa-solid fa-circle-info"></i>
         Info
       </button>
     </td>        
   `;
+  const btnInfo = tr.querySelector('.details');
+  btnInfo.addEventListener('click', () => openDetails(member.login));
   table.appendChild(tr);
-}
-
- export function clearTable() {
-  table.innerHTML = '';
 }
 
 export function openDetails(user) {
@@ -49,15 +47,23 @@ export function openDetails(user) {
           </div>
         </div> 
         <div class="close">
-          <button class="details return" onclick="modal.click()">
+          <button class="details return">
             <i class="fa-solid fa-arrow-left"></i>
           <button/> 
         </div>         
-      `;
+      `
+      const closeButton = div.querySelector('.details.return');
+      closeButton.addEventListener('click', () => {
+        modal.click();
+      });
       
       modal.click();
     })
     .catch(error => {
       console.error('Erro ao buscar detalhes do usuário:', error);
     });
+}
+
+export function clearTable() {
+  table.innerHTML = '';
 }

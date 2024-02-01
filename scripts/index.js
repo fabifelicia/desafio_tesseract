@@ -39,6 +39,12 @@ export async function filterByLogin(login) {
   }
 }
 
+export async function qtdMembers() {
+  const { count } = await listMembers()
+  document.getElementsByClassName('table-row-count')[0].innerHTML = `${count} Members`
+  return count
+}
+
 const btnFilter = document.querySelector('.search');
 const btnCancel = document.querySelector('.cancel');
 
@@ -54,4 +60,5 @@ btnCancel.addEventListener('click', () => {
   members();
 });
 
-members();
+members()
+qtdMembers()

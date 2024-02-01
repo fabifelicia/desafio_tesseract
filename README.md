@@ -1,6 +1,6 @@
 # Desafio Tesseract
 
-### Este desafio consiste em uma listagem dos membros do Tesseract e exibição de detalhes sobre a pessoa selecionada. Você deve criar uma página que tenha os seguintes requisitos:
+### Este desafio consiste em listar membros do [Grupo Tesseract](https://www.grupotesseract.com.br) e exibir detalhes sobre o usuário selecionado. A página deve apresentar as seguintes informações:
 
 1. Lista com os atuais membros no Github, com login e foto
 2. Campo de filtro para filtrar os membros (por login)
@@ -11,13 +11,14 @@
 * Quantidade de seguidores
 * Data em que a pessoa entrou no Github
 
-### Os membros do Tesseract, assim como suas informações, devem ser carregados de modo dinâmico pela api do github:
+### Os membros do [Grupo Tesseract](https://www.grupotesseract.com.br), assim como suas informações, devem ser carregados de modo dinâmico pela api do github:
  **(https://api.github.com/orgs/grupotesseract/public_members)**
  
  **(https://api.github.com/users/{user})**
 
-#### Utilizado as seguintes stacks:
+#### Tecnologias utilizadas:
 * JavaScript
 * HTML
 * CSS
-* FETCH API
+* fetch Api
+* Jest

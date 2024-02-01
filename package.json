@@ -1,0 +1,28 @@
+{
+  "name": "desafio_tesseract",
+  "version": "1.0.0",
+  "description": "Desafio Tesseract",
+  "main": "./scripts/index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "Fabiana Barreto",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
+    "@babel/preset-react": "^7.23.3",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0"
+  }
+}

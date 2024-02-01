@@ -1,2 +1,4 @@
 .vscode
 /fontawesome
+/node_modules
+/coverage

@@ -49,7 +49,7 @@ export function openDetails(user) {
         <div class="close">
           <button class="details return">
             <i class="fa-solid fa-arrow-left"></i>
-          <button/> 
+          </button> 
         </div>         
       `
       const closeButton = div.querySelector('.details.return');

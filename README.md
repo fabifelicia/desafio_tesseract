@@ -1,28 +1,73 @@
-# Desafio Tesseract
+# 🔍 Desafio Tesseract
 
-### Este desafio consiste em listar membros do [Grupo Tesseract](https://www.grupotesseract.com.br) e exibir detalhes sobre o usuário selecionado. A página deve apresentar as seguintes informações:
+Este projeto foi desenvolvido como parte de um desafio técnico, com o objetivo de listar os membros do [Grupo Tesseract](https://www.grupotesseract.com.br) utilizando a **API pública do GitHub**.
 
-1. Lista com os atuais membros no Github, com login e foto
-2. Campo de filtro para filtrar os membros (por login)
-3. Ao clicar em um membro, exibir informações daquela pessoa:
+A aplicação permite:
 
-* Nome
-* Quantidade de repositórios
-* Quantidade de seguidores
-* Data em que a pessoa entrou no Github
+1. 📋 Listar os membros do grupo, exibindo login e foto de perfil  
+2. 🔎 Filtrar os membros pelo login  
+3. 👤 Ao clicar em um membro, exibir detalhes como:
+   - Nome
+   - Quantidade de repositórios
+   - Quantidade de seguidores
+   - Data de entrada no GitHub
 
-### Os membros do [Grupo Tesseract](https://www.grupotesseract.com.br), assim como suas informações, devem ser carregados de modo dinâmico pela api do github:
- **(https://api.github.com/orgs/grupotesseract/public_members)**
- 
- **(https://api.github.com/users/{user})**
+---
 
-#### Tecnologias utilizadas:
-* JavaScript
-* HTML
-* CSS
-* fetch Api
-* Jest
+## 🌐 Acesse o projeto online
 
-#### Desafio publicado em https://fabifelicia.github.io/desafio_tesseract/
+🚀 [Clique aqui para visualizar](https://fabifelicia.github.io/desafio_tesseract/)
 
-[![CodeFactor](https://www.codefactor.io/repository/github/fabifelicia/desafio-receita-rocketseat/badge)](https://www.codefactor.io/repository/github/fabifelicia/desafio-receita-rocketseat)
+---
+
+## 🔗 APIs Utilizadas
+
+- [GET membros do grupo](https://api.github.com/orgs/grupotesseract/public_members)  
+- [GET detalhes do usuário](https://api.github.com/users/{user})
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- HTML5  
+- CSS3  
+- JavaScript  
+- Fetch API  
+- Jest (para testes)
+
+---
+
+## 📸 Preview
+
+> ![image](https://github.com/user-attachments/assets/c81a64f0-a720-4b70-8073-df266fc40a7a)
+
+---
+
+## 🧠 Aprendizados
+
+Durante o desenvolvimento deste desafio, foram explorados:
+
+- Requisições assíncronas com `fetch`
+- Manipulação de DOM
+- Filtros dinâmicos com JavaScript
+- Boas práticas com código modular
+- Testes unitários com Jest
+
+---
+
+## ✅ Funcionalidades Extras (se aplicável)
+
+> 💡 Utilização da SweetAlert para alertas. 
+
+---
+
+## 🙋‍♀️ Autora
+
+- **Fabiana Barreto**  
+  [GitHub: @fabifelicia](https://github.com/fabifelicia)
+  
+
+[![CodeFactor](https://www.codefactor.io/repository/github/fabifelicia/desafio_tesseract/badge)](https://www.codefactor.io/repository/github/fabifelicia/desafio_tesseract)
+
+
+

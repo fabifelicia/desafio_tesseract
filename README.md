@@ -55,7 +55,7 @@ Durante o desenvolvimento deste desafio, foram explorados:
 
 ---
 
-## ✅ Funcionalidades Extras (se aplicável)
+## ✅ Funcionalidades Extras
 
 > 💡 Utilização da SweetAlert para alertas. 
 
